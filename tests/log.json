@@ -1,0 +1,9 @@
+[
+  {
+    "date": "1974",
+    "emitter": "Tests",
+    "source": "LogTest.php",
+    "component": "Acme",
+    "entry": "Something happens."
+  }
+]
