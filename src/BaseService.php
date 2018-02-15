@@ -22,8 +22,9 @@ class BaseService {
         }
     }
 
-    protected function sendSuccessResponse () {
+    protected function sendSuccessResponse ($responseBody = '') {
         // HTTP 200 OK
+        echo $responseBody;
     }
 
     protected function sendInvalidMethodResponse () {

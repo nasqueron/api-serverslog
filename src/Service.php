@@ -18,15 +18,22 @@ class Service extends BaseService {
     /// Controller
     ///
 
+    private function isAliveRequest() : bool {
+        return
+            $_SERVER['REQUEST_METHOD'] === "GET"
+        &&
+            $_SERVER['REQUEST_URI']	=== '/status';
+    }
+
     public function handle () : void {
-        $body = $this->getBodyObject();
-
-        if ($_SERVER['REQUEST_METHOD'] === "PUT") {
+        if ($this->isAliveRequest()) {
+            $this->sendSuccessResponse("ALIVE");
+        } elseif ($_SERVER['REQUEST_METHOD'] === "PUT") {
+            $body = $this->getBodyObject();
             $this->put($body);
-            return;
+        } else {
+            $this->sendInvalidMethodResponse();
         }
-
-        $this->sendInvalidMethodResponse();
     }
 
     public function put ($data) : void {
