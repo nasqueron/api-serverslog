@@ -38,7 +38,7 @@ class LogEntry {
         return str_replace("+00:00", "Z", gmdate('c'));
     }
 
-    public static function fromJSON ($json) : object {
+    public static function fromJSON ($json) : LogEntry {
         $mapper = (new JsonMapper());
         return $mapper->map($json, new LogEntry);
     }
