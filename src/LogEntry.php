@@ -25,7 +25,7 @@ class LogEntry {
     ///
 
     public function __construct () {
-        $this->date = self::get_current_timestamp();
+        $this->date = self::getCurrentTimestamp();
     }
 
     ///
@@ -33,7 +33,7 @@ class LogEntry {
     ///
 
     // Helper methods
-    private static function get_current_timestamp () : string {
+    private static function getCurrentTimestamp () : string {
         // Nasqueron log format: 2016-02-13T23:14:00Z (with a final Z for UTC)
         return str_replace("+00:00", "Z", gmdate('c'));
     }
