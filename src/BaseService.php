@@ -27,9 +27,19 @@ class BaseService {
         echo $responseBody;
     }
 
+    protected function sendBadRequestResponse () {
+        header("HTTP/1.0 400 Bad Request");
+        http_response_code(400);
+    }
+
     protected function sendInvalidMethodResponse () {
         header("HTTP/1.0 405 Method Not Allowed");
         http_response_code(405);
+    }
+
+    protected function sendInternalServerErrorResponse () {
+        header("HTTP/1.0 500 Internal Server Error");
+        http_response_code(500);
     }
 
 }

@@ -37,8 +37,19 @@ class Service extends BaseService {
     }
 
     public function put ($data) : void {
+        if ($data === NULL) {
+            $this->sendBadRequestResponse();
+            return;
+        }
+
+        $log = self::getServersLogFile();
+        if (!$log) {
+            $this->sendInternalServerError();
+            return;
+        }
+
         Log::addEntryToJSONFile(
-            self::getServersLogFile(),
+            $log,
             LogEntry::fromJSON($data)
         );
 
