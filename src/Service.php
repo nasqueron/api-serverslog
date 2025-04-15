@@ -22,7 +22,7 @@ class Service extends BaseService {
         return
             $_SERVER['REQUEST_METHOD'] === "GET"
         &&
-            $_SERVER['DOCUMENT_URI'] === '/status';
+            $_SERVER['REQUEST_URI'] === '/status';
     }
 
     public function handle () : void {
