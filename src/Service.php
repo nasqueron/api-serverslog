@@ -61,7 +61,7 @@ class Service extends BaseService {
     ///
 
     private function loadEnvironment () : void {
-        $env = new Dotenv(__DIR__);
+        $env = Dotenv::createUnsafeImmutable(__DIR__);
         if (file_exists(__DIR__ . '/.env')) {
             $env->load();
         }
